@@ -25,7 +25,7 @@ function deref(s, options={})
         } else if (match[5]) { // args
             const arg = args[Number.parseInt(match[5])];
             if (arg) { result += `${match[4]}${arg}`; if (match[6])
-            { index -= match[6].length; regex.lastIndex -= match[6].length }
+            { index -= match[6].length; regex.lastIndex -= match[6].length; }
             } else result += match[0];  // ignore
         } else result +=  // escape sequence
             match[3] ==  'n' ?  '\n' :  // newline (U+000A LINE FEED; LF)
@@ -42,6 +42,4 @@ function deref(s, options={})
     } return (result + s.slice(index)).slice(1, -1);
 }
 
-module.exports = {
-    deref: deref
-}
+module.exports = deref;
